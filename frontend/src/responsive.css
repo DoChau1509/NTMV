@@ -1,0 +1,205 @@
+/* Shared sizing keeps forms and long shipment codes within their container. */
+.lookup-app { min-height: 100svh; }
+.lookup-app :where(section, form, label, fieldset),
+.lookup-app :where(.card-heading > div, .shipment-title > div, .timeline li > div) {
+  min-width: 0;
+}
+.lookup-app :where(p, h1, h2, h3, small, strong, .status-badge, .order-contact a) {
+  overflow-wrap: anywhere;
+}
+.lookup-app :where(img, video) { max-width: 100%; height: auto; }
+.lookup-header { height: auto; min-height: 98px; flex-wrap: wrap; padding-block: 18px; }
+.lookup-header .brand { flex-shrink: 1; min-width: 0; }
+.brand-mark, .tool-icon, .step-dot, .total-check { flex-shrink: 0; }
+.account-actions { flex-wrap: wrap; justify-content: flex-end; min-width: 0; }
+.account-label { max-width: 160px; }
+.lookup-header nav { flex-wrap: wrap; }
+.lookup-header nav a { display: inline-flex; align-items: center; min-height: 44px; }
+.primary, .secondary, .icon-button, .text-button { min-height: 44px; }
+.icon-button { min-width: 44px; }
+.lookup-app :where(input:not([type=checkbox]):not([type=radio]), select),
+.lookup-modal :where(input, select) { min-height: 44px; }
+.tool-card { width: 100%; min-width: 0; }
+.card-heading { gap: 12px; }
+.rate-summary, .breakdown > div, .tier-list > div { flex-wrap: wrap; gap: 10px; }
+.rate-summary button { min-height: 44px; }
+.quote-total { gap: 12px; }
+.quote-total > span:first-child { min-width: 0; }
+.quote-total strong { font-size: clamp(24px, 4vw, 32px); letter-spacing: -.5px; }
+.shipment-title { flex-wrap: wrap; }
+.status-badge, .shipment-payment small { white-space: normal; overflow-wrap: anywhere; }
+.tracking-search > svg { flex-shrink: 0; }
+.mini-route { flex-wrap: wrap; justify-content: center; }
+.journey-steps > div { min-width: 0; padding-inline: 8px; text-align: center; }
+.lookup-footer { flex-wrap: wrap; }
+.notification { bottom: max(16px, env(safe-area-inset-bottom)); overflow-wrap: anywhere; }
+.notification > svg, .notification button { flex-shrink: 0; }
+.notification button { min-width: 44px; min-height: 44px; margin-left: 0; }
+.lookup-modal {
+  width: calc(100% - 24px);
+  max-width: 720px;
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 28px 24px;
+  border-radius: 14px;
+}
+.lookup-modal > h2 { padding-right: 32px; line-height: 1.4; }
+.lookup-modal > button { min-width: 44px; min-height: 44px; top: 8px; right: 8px; display: grid; place-items: center; }
+.edit-form label { min-width: 0; }
+.subheading { flex-wrap: wrap; gap: 8px; }
+.fee-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr) 44px; }
+.fee-row > .icon-button { height: 44px; }
+.manage-actions { flex-wrap: wrap; }
+.manage-actions > input { flex: 1 1 240px; }
+.order-filters label { min-width: 0; }
+
+@media (max-width: 1100px) {
+  .lookup-header nav { order: 3; flex-basis: 100%; margin: 0; justify-content: center; }
+}
+
+@media (max-width: 850px) {
+  .intro-art { right: -20px; opacity: .25; }
+  .intro h1, .intro p, .intro .eyebrow { position: relative; z-index: 1; }
+}
+
+@media (max-width: 600px) {
+  .lookup-header, .lookup-main { padding-inline: 16px; }
+  .lookup-header { gap: 16px; }
+  .lookup-header .brand { flex-basis: 100%; justify-content: center; }
+  .lookup-header .brand .brand-name { font-size: clamp(20px, 5.5vw, 26px); }
+  .account-actions { flex: 1 1 100%; margin: 0; justify-content: center; gap: 8px; }
+  .account-label { width: 100%; max-width: none; text-align: center; font-size: 13px; }
+  .account-label small { font-size: 11px; }
+  .account-actions .secondary, .account-actions .text-button { font-size: 12px; padding: 10px 12px; }
+  .account-actions .secondary svg { width: 16px; }
+  .lookup-header nav { gap: 12px; font-size: 13px; }
+  .lookup-header nav a { justify-content: center; flex: 1 1 120px; }
+  .top-strip { gap: 12px; padding-inline: 16px; font-size: 10px; }
+  .top-strip > :last-child { white-space: nowrap; }
+  .intro { padding: 28px 20px; min-height: 0; }
+  .intro h1 { font-size: clamp(29px, 7vw, 38px); }
+  .intro .eyebrow { font-size: 9px; line-height: 1.8; letter-spacing: 1px; }
+  .intro p { max-width: 100%; font-size: 13px; }
+  .intro-art { display: none; }
+  .tool-card { padding: 20px 16px; }
+  .card-heading h2 { font-size: 19px; line-height: 1.4; }
+  .card-heading .eyebrow { line-height: 1.6; }
+  .tool-icon { width: 40px; height: 40px; }
+  .muted, .field-label, .breakdown > div, .breakdown b,
+  .lookup-choice, .shipment-title h3, .timeline b, .shipment-note,
+  .edit-form label, .fee-row label, .order-price, .quick-payment label { font-size: 13px; }
+  .fine-print, .rate-summary, .rate-summary button, .fee-details summary,
+  .tier-list > div, .status-badge, .shipment-title small, .timeline small { font-size: 12px; }
+  .fee-details summary { padding-block: 10px; }
+  .tracking-search { display: grid; grid-template-columns: 18px minmax(0, 1fr); padding: 10px; }
+  .tracking-search input { padding: 8px 0; }
+  .tracking-search .primary { grid-column: 1 / -1; width: 100%; font-size: 13px; }
+  .tracking-empty { min-height: 240px; }
+  .tracking-empty p { font-size: 13px; }
+  .mini-route { gap: 6px; font-size: 11px; }
+  .quote-total { padding: 16px; }
+  .breakdown > div > b { margin-left: auto; }
+  .tier-list b { white-space: normal; }
+  .journey-steps b { font-size: 12px; line-height: 1.6; }
+  .journey-steps span { font-size: 14px; }
+  .lookup-footer { margin-inline: 16px; gap: 16px; }
+  .lookup-footer > span, .lookup-footer > small { font-size: 12px; line-height: 1.6; }
+  .lookup-footer > small { margin-left: 0; }
+  .manage-actions > .primary { width: 100%; }
+  .order-filters { padding: 12px; }
+  .order-filters > .secondary { width: 100%; }
+  .order-management .orders-table td { font-size: 13px; }
+  .order-management .orders-col-code { width: 112px; }
+  .quick-payment .secondary { padding: 10px 14px; }
+  .lookup-app input:not(#cny), .lookup-app select, .lookup-app textarea,
+  .lookup-modal input, .lookup-modal select, .lookup-modal textarea { font-size: 16px; }
+  .fee-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 44px; }
+}
+
+@media (max-width: 380px) {
+  .lookup-main, .lookup-header { padding-inline: 12px; }
+  .card-heading { flex-wrap: wrap; }
+  .card-heading > .icon-button { margin-left: auto; }
+  .journey-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .journey-steps > div { border-right: 1px solid var(--line); }
+  .journey-steps > div:nth-child(2n) { border-right: 0; }
+  .journey-steps > div:nth-child(3) { border-right: 1px solid var(--line); }
+  .lookup-modal { padding: 24px 16px; }
+  .fee-row { grid-template-columns: minmax(0, 1fr) 44px; }
+  .fee-row > label:nth-child(n) { grid-column: 1 / -1; }
+  .fee-row > .icon-button { grid-column: 2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Management pages have their own workspace, not the narrow lookup layout. */
+.tools-grid.single-tool:has(.employee-management) {
+  grid-template-columns: minmax(0, 1fr);
+}
+.order-edit-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.order-edit-form > label:has(textarea),
+.order-edit-form > label:has(input[type="url"]),
+.order-edit-form > button { grid-column: 1 / -1; }
+.employee-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 32px;
+  margin-top: 24px;
+}
+.employee-workspace .employee-form {
+  margin: 0;
+  padding: 0 24px 0 0;
+  border-bottom: 0;
+  border-right: 1px solid var(--line);
+}
+.employee-list { min-width: 0; }
+.employee-list h3 { margin-top: 0; font-size: 16px; }
+.employee-list .manage-row { gap: 16px; }
+.employee-list .manage-row strong { font-size: 14px; line-height: 1.6; }
+.employee-list .manage-row p { font-size: 13px; line-height: 1.6; }
+.manage-row > button { flex-shrink: 0; }
+.order-management .order-filters { margin-bottom: 20px; }
+.order-management .quick-payment { width: 100%; }
+.order-management .order-row-actions { gap: 8px; }
+.order-management .orders-table td { line-height: 1.6; }
+.order-management .orders-table select { min-height: 44px; }
+
+/* Dialogs render in a portal outside the application container. */
+.responsive-dialog {
+  width: calc(100% - 24px);
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 12px;
+}
+.responsive-dialog > * { min-width: 0; }
+.responsive-dialog :where(h2, p, label) { overflow-wrap: anywhere; }
+.responsive-dialog .grid > :not([class*="min-w-"]) { min-width: 0; }
+
+@media (max-width: 850px) {
+  .employee-workspace { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .employee-workspace .employee-form {
+    padding: 0 0 24px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 600px) {
+  .order-edit-form { grid-template-columns: minmax(0, 1fr); }
+  .order-edit-form > label { grid-column: 1; }
+  .employee-workspace .employee-form > button { width: 100%; }
+  .employee-list .manage-row { align-items: flex-start; }
+  .responsive-dialog { padding: 24px 16px; }
+  .responsive-dialog :where(input:not([type="checkbox"]):not([type="radio"]), textarea) { font-size: 16px; }
+}
+
+@media (pointer: coarse) {
+  .lookup-modal .text-button { min-height: 44px; }
+}

@@ -1,0 +1,4 @@
+{
+  "extends": "./tsconfig.app.json",
+  "include": ["src/main.tsx", "src/App.tsx", "src/lib/shop.ts", "src/lib/order-api.ts", "src/test/shop.test.tsx", "src/test/setup.ts"]
+}

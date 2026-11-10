@@ -1,0 +1,127 @@
+DANH SÁCH CHỨC NĂNG CHI TIẾT CỦA TỪNG VAI TRÒ (ROLE) TRONG HỆ THỐNG ĐÁNH GIÁ ĐIỂM RÈN LUYỆN (DRL)
+
+================================================================================
+1. ADMIN (Quản trị viên)
+================================================================================
+* Chức năng hệ thống:
+  - Xem thông tin tổng quan sức khỏe hệ thống (System Health & Metrics), các cảnh báo hiệu năng, lỗi xử lý.
+  - Xem đầy đủ dấu vết hoạt động (Audit Logs) của mọi tài khoản bao gồm IP, thời gian, hành động.
+* Quản lý Người dùng & Phân quyền:
+  - Tạo mới tài khoản cho mọi vai trò (hệ thống tự động phát sinh mã định danh và cấp mật khẩu ngẫu nhiên dạng plain text phục vụ lần đầu đăng nhập).
+  - Cập nhật thông tin tài khoản (Họ tên, email, vai trò, mã số...).
+  - Reset mật khẩu tài khoản bất kỳ.
+  - Thay đổi dữ liệu gương mặt Face ID (Avatar/Embedding) của bất kỳ tài khoản nào.
+* Quản lý Hạ tầng & Cơ cấu tổ chức:
+  - Thêm, sửa, xóa các phòng học/phòng họp (Room) và kiểm tra phòng trống theo ngày/giờ để lên lịch hoạt động.
+  - Thêm, sửa, xóa thông tin Câu lạc bộ / Tổ chức / Khoa (Organization).
+  - Phân công cán bộ/thành viên quản lý các tổ chức.
+* Quản lý Đợt đánh giá & Bộ tiêu chí DRL:
+  - Thêm, sửa, xóa, kích hoạt các Bộ tiêu chí điểm rèn luyện (Criteria Sets) theo năm học/học kỳ.
+  - Thiết kế cấu trúc tiêu chí (Criterion -> Group Criterion -> SubItem).
+  - Khởi tạo phiếu đánh giá hàng loạt (Bulk Init) cho sinh viên toàn trường đầu học kỳ.
+* Quản lý Phiếu đánh giá rèn luyện (Evaluations):
+  - Xem chi tiết toàn bộ phiếu đánh giá của sinh viên.
+  - Thực hiện "Admin Override" - bỏ qua trạng thái khóa workflow để can thiệp chỉnh sửa phiếu DRL ở bất kỳ trạng thái nào.
+  - Thay đổi trạng thái phiếu DRL hàng loạt (Bulk status update).
+* Quản lý Báo cáo & Xuất dữ liệu:
+  - Tạo mới, cập nhật và chạy các công việc xuất báo cáo (Report Jobs) toàn trường.
+  - Xuất báo cáo kết quả rèn luyện học kỳ, năm học ra file Excel.
+* Giám sát gian lận:
+  - Xem các cảnh báo phát hiện gian lận (Fraud Detection) do AI/hệ thống phân tích khi điểm danh Face ID hoặc khi tự chấm điểm.
+  - Gắn cờ gian lận (Fraud Flag) lên các tài khoản/phiếu vi phạm quy chế.
+
+================================================================================
+2. STUDENT (Sinh viên)
+================================================================================
+* Quản lý Thông tin cá nhân:
+  - Xem thông tin chi tiết tài khoản (MSSV, lớp, khoa, khóa...).
+  - Đăng ký gương mặt Face ID lần đầu bằng hình ảnh camera (Avatar) và cập nhật/đăng ký lại khi cần thiết.
+  - Thay đổi mật khẩu cá nhân.
+* Đánh giá Điểm rèn luyện:
+  - Xem cấu trúc tiêu chí đánh giá DRL hiện hành.
+  - Tự chấm điểm các tiêu chí chấm thủ công (Manual SubItems), hệ thống tự động khóa/chặn đối với các tiêu chí tự động (như GPA, hoạt động đã tham gia).
+  - Tính năng Tự động lưu bản nháp (Auto Save) liên tục trong quá trình chấm điểm.
+  - Nộp phiếu tự đánh giá (Submit Self Assessment) lên cấp lớp duyệt.
+  - Xem lịch sử các phiếu rèn luyện học kỳ trước.
+  - Tạo các yêu cầu thay đổi/phản hồi (Change Requests) nếu có thắc mắc về điểm rèn luyện.
+* Đăng ký & Điểm danh hoạt động:
+  - Xem danh sách hoạt động ngoại khóa, lọc theo trạng thái, CLB hoặc lớp.
+  - Đăng ký tham gia các hoạt động ngoại khóa, xem số lượng slot còn lại.
+  - Thực hiện điểm danh vào (Check-in) và điểm danh ra (Check-out) bằng Face ID tại địa điểm tổ chức (hoặc bằng mã check-in/mã OTP do ban tổ chức cung cấp).
+* Khai báo Hoạt động ngoại khóa tự do (External Activities):
+  - Đăng ký các hoạt động ngoài trường tham gia.
+  - Tải lên các tệp minh chứng (Evidence Files) như hình ảnh giấy chứng nhận, file PDF, ghi chú minh chứng kèm theo để chờ CTSV duyệt cộng điểm.
+
+================================================================================
+3. CLASS MONITOR (Ban cán sự lớp - Lớp trưởng, Lớp phó)
+================================================================================
+* Chức năng cá nhân:
+  - Thừa hưởng đầy đủ các chức năng cá nhân của vai trò **Sinh viên** (tự chấm điểm DRL, điểm danh Face ID, khai báo minh chứng cá nhân...).
+* Phê duyệt Điểm rèn luyện cấp Lớp:
+  - Xem danh sách toàn bộ phiếu tự đánh giá của sinh viên cùng lớp học.
+  - Thực hiện chấm điểm lại ở vai trò cấp lớp (đánh giá chuyên cần, đóng góp của sinh viên).
+  - Ghi chú nhận xét của ban cán sự lớp (Review Note).
+  - Duyệt thông qua phiếu rèn luyện của sinh viên lớp mình (chuyển trạng thái phiếu sang 'advisor_pending' - chờ Cố vấn học tập duyệt).
+* Quản lý hoạt động lớp:
+  - Xem danh sách sinh viên tham gia các hoạt động trong phạm vi lớp học được cho phép.
+  - Xuất danh sách sinh viên tham gia hoạt động của lớp ra file Excel.
+  - Nhận thông báo tự động ngay khi có sinh viên trong lớp hoàn thành nộp phiếu tự đánh giá.
+
+================================================================================
+4. ADVISOR (Cố vấn học tập)
+================================================================================
+* Quản lý Lớp học:
+  - Xem danh sách và thông tin chi tiết các lớp học được phân công làm Cố vấn.
+  - Xem danh sách chi tiết sinh viên thuộc lớp phụ trách.
+* Điều phối Ban cán sự:
+  - Phân công vai trò Lớp trưởng (Assign Monitor) cho một sinh viên cụ thể trong lớp (hệ thống tự nâng quyền tài khoản).
+  - Phân công các chức danh khác (Lớp phó, Bí thư,...) trong lớp.
+  - Thu hồi chức danh (Revoke Position) và giáng quyền tài khoản về sinh viên thường.
+* Phê duyệt Điểm rèn luyện cấp Cố vấn:
+  - Tiếp nhận danh sách phiếu rèn luyện của lớp đã được ban cán sự lớp thông qua.
+  - Chỉnh sửa, đánh giá lại điểm của sinh viên nếu cần thiết.
+  - Phê duyệt hoàn tất (Approve): Chuyển trạng thái phiếu sang 'approved', 'published' hoặc 'locked' để ghi nhận điểm rèn luyện chính thức.
+  - Từ chối/Trả lại phiếu (Reject): Gửi trả phiếu về cấp lớp/sinh viên để giải trình hoặc chấm lại kèm ghi chú (Review Note) lý do từ chối.
+* Điều hành Hoạt động điểm danh:
+  - Phê duyệt hoặc xem điểm danh chuyên cần của các sự kiện tổ chức riêng cho lớp học.
+  - Xuất file Excel danh sách điểm danh các hoạt động này.
+- Nhận thông báo khi có phiếu mới nộp hoặc khi ban cán sự lớp hoàn thành duyệt phiếu.
+
+================================================================================
+5. ORGANIZER (Ban tổ chức / Ban chủ nhiệm CLB)
+================================================================================
+* Quản lý Hoạt động & Sự kiện (Activities):
+  - Tạo mới hoạt động ngoại khóa, khai báo: Tên hoạt động, mô tả, nội dung tiêu chí cộng điểm, thời gian bắt đầu/kết thúc, thời lượng, số lượng sinh viên tối đa, phân loại phạm vi áp dụng (Toàn trường, câu lạc bộ, lớp cụ thể).
+  - Cập nhật thông tin chi tiết hoặc Hủy hoạt động đã lên lịch.
+* Tổ chức Điểm danh (Attendance Control):
+  - Phê duyệt danh sách sinh viên đăng ký tham gia sự kiện.
+  - Quản lý các phiên Check-in / Check-out điểm danh tại sự kiện (Face ID, mã QR, mã Check-in).
+  - Cập nhật trạng thái tham gia thủ công cho sinh viên trong trường hợp đặc biệt.
+  - Xuất danh sách sinh viên tham gia sự kiện ra file Excel (Export Excel).
+
+================================================================================
+6. STUDENT AFFAIRS (Phòng Công tác Sinh viên - CTSV)
+================================================================================
+* Quản lý Cấu trúc & Đợt đánh giá:
+  - Xem và đóng góp ý kiến về các Bộ tiêu chí (Criteria Sets).
+  - Xem danh sách các đợt tự đánh giá, cấu hình ngày mở tự đánh giá và hạn chót tự đánh giá (self_assessment_start, self_assessment_deadline).
+* Thẩm định Minh chứng Hoạt động tự do:
+  - Tiếp nhận danh sách các hoạt động ngoại khóa tự do (External Activities) sinh viên gửi yêu cầu cộng điểm.
+  - Xem và đánh giá các tệp minh chứng đính kèm (Evidence Files).
+  - Phê duyệt (Approve) để cộng điểm tự động vào phiếu DRL, hoặc Trả lại (Need more info / Reject) yêu cầu sinh viên cung cấp thêm bằng chứng kèm theo lý do cụ thể.
+* Quản lý Chống gian lận:
+  - Kiểm tra các cảnh báo hành vi gian lận (Fraud Detection) do hệ thống phân tích phát hiện (như: Trùng ảnh minh chứng, trùng mã băm của file minh chứng giữa các sinh viên khác nhau, gian lận điểm danh gương mặt...).
+  - Xác nhận và thực hiện Gắn cờ gian lận (Fraud Flag) lên sinh viên vi phạm để trừ điểm hoặc xử lý kỷ luật.
+* Báo cáo Thống kê & Xuất dữ liệu:
+  - Xem toàn bộ danh sách lớp học, sinh viên, hoạt động và các phiếu đánh giá trong hệ thống.
+  - Tạo và thực thi các công việc xuất báo cáo (Report Jobs) thống kê kết quả DRL theo đơn vị lớp/khoa/toàn trường.
+
+================================================================================
+7. ACADEMIC AFFAIRS (Phòng Đào tạo)
+================================================================================
+* Quản lý Bảng điểm học tập (Academic Transcripts):
+  - Nhập bảng điểm học tập học kỳ của sinh viên (Transcript Import) từ file Excel/CSV vào hệ thống.
+  - Theo dõi tiến độ import chạy ngầm (Background job processing) và xem danh sách chi tiết các dòng dữ liệu bị lỗi/không khớp MSSV.
+  - Hệ thống tự động đồng bộ kết quả GPA và Phân loại học tập (Xuất sắc, Giỏi, Khá, Trung bình...) để tự động hóa việc tính điểm rèn luyện ở mục Học tập trong phiếu DRL của sinh viên.
+* Báo cáo Thống kê:
+  - Xem danh sách báo cáo, tạo các công việc xuất dữ liệu báo cáo (Report Jobs) liên quan đến kết quả học tập và rèn luyện của sinh viên để đánh giá học bổng hoặc xét tốt nghiệp.
